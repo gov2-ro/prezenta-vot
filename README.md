@@ -4,4 +4,9 @@
 
 demo: [pvot.gov2.ro](https://pvot.gov2.ro/) 
 
+
+---
+
+<a href="https://votcorect.ro"><img src="static/assets/logo-votcorect.svg" alt="logo VotCorect" width="175"/></a>
+
 [dev notes](https://docs.google.com/document/d/165hIqF7t6vZ1cRA-Lz4AIc7cWyUQxrGI/) 
