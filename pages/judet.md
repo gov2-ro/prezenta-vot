@@ -1,5 +1,5 @@
 ---
-title: județ
+title: Profil județ
 ---
 
  

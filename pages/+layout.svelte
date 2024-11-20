@@ -11,6 +11,7 @@ export let data;
 
 <EvidenceDefaultLayout 
 	{data} title="Prezență alegeri"
+	homePageName = "Național"
 	-logo="/assets/votcorect-alb.svg"
 	maxWidth=1800
 	fullWidth=true
