@@ -172,3 +172,6 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
       filter=true
       title="voturi / oră"            
   />
+
+
+ 

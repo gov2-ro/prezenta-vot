@@ -10,10 +10,13 @@ export let data;
 </svelte:head>
 
 <EvidenceDefaultLayout 
-	{data} title="Prezență alegeri - Vot Corect" 	 
+	{data} title="Prezență alegeri"
+	-logo="/assets/votcorect-alb.svg"
 	maxWidth=1800
 	fullWidth=true
 	githubRepo="https://github.com/gov2-ro/prezenta.roaep.ro"
 >
 	<slot slot="content" />
 </EvidenceDefaultLayout>
+
+ 
