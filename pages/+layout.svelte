@@ -13,7 +13,7 @@ export let data;
 	{data} title="Prezență alegeri - Vot Corect" 	 
 	maxWidth=1800
 	fullWidth=true
-	xhideSidebar=true
+	
 >
 	<slot slot="content" />
 </EvidenceDefaultLayout>

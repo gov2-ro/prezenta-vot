@@ -109,6 +109,7 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
 
 ```
 
+## Dinamică / ore
 
 <Dropdown
     data={alegeri} 
@@ -133,8 +134,11 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
 
 <!-- Selected: <br/> {inputs.alegeri.value} <br/>  {inputs.judete.value} <br/>  {inputs.liste.value} -->
    
+### Cumulativ
 
 <LineChart data={ziData} x="time" y="voturi" series="alegeri" title="Voturi {inputs.liste.label} - absolut (cumulativ)" xLabel="Timp" yLabel="Voturi"  sort=True />
+
+### Pe oră
 
 <BarChart data={ziDataDiff} x="time" y="voturi_diferenta" series="alegeri" title="Voturi {inputs.liste.label}" xLabel="Timp" yLabel="Voturi"  sort=True     type=grouped />
 
@@ -152,6 +156,8 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
 />
 
 <BarChart data={nationalDemographics} x="time" y="difference" series="category" title="Demografie" xLabel="Timp" yLabel="Voturi"  sort=True />
+
+### Heatmap
 
  <Heatmap 
       data={ziDataJud} 

@@ -104,11 +104,11 @@ SELECT
     ) AS voturi_diferenta
 FROM Judete
 WHERE alegeri IN ${inputs.alegeri.value} AND Judet == '${inputs.judete.value}' AND voturi IS NOT NULL
- 
 ORDER BY time ASC;
 
-
 ```
+
+## Comparații alegeri
 
 <Dropdown
     data={judete} 
@@ -139,9 +139,13 @@ ORDER BY time ASC;
 />
 
 <!-- Selected: <br/> {inputs.alegeri.value} <br/>  {inputs.judete.value} <br/>  {inputs.liste.value} -->
- {inputs.judete.value} /  {inputs.liste.value} 
+Județ: <b>{inputs.judete.value}</b> / tip listă: <b>{inputs.liste.value} </b>
+
+### Cumulativ
 
 <LineChart data={ziData} x="time" y="voturi" series="alegeri" title="Prezență vot în timp - agregat (cumulativ)" xLabel="Timp" yLabel="Voturi"  sort=True />
+
+### Pe oră
 
 <LineChart data={ziDataDiff} x="time" y="voturi_diferenta" series="alegeri" title="Voturi {inputs.liste.label}" xLabel="Timp" yLabel="Voturi"  sort=True     type=grouped />
 
