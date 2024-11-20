@@ -57,6 +57,26 @@ WHERE alegeri IN ${inputs.alegeri.value}
 ORDER BY time ASC;
 ```
 
+```sql ziDataDiff
+
+SELECT  
+    alegeri, 
+    date, 
+    time, 
+    ${inputs.liste.value} AS voturi,
+    ${inputs.liste.value} - LAG(${inputs.liste.value}, 1) OVER (
+        PARTITION BY alegeri, Judet 
+        ORDER BY time
+    ) AS voturi_diferenta
+FROM Judete
+WHERE alegeri IN ${inputs.alegeri.value} 
+ 
+ORDER BY time ASC;
+
+
+```
+
+
 ```sql nationalDemographics
 
 SELECT 
@@ -114,7 +134,9 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
 <!-- Selected: <br/> {inputs.alegeri.value} <br/>  {inputs.judete.value} <br/>  {inputs.liste.value} -->
    
 
-<LineChart data={ziData} x="time" y="voturi" series="alegeri" title="Voturi {inputs.liste.label}" xLabel="Timp" yLabel="Voturi"  sort=True />
+<LineChart data={ziData} x="time" y="voturi" series="alegeri" title="Voturi {inputs.liste.label} - absolut (cumulativ)" xLabel="Timp" yLabel="Voturi"  sort=True />
+
+<BarChart data={ziDataDiff} x="time" y="voturi_diferenta" series="alegeri" title="Voturi {inputs.liste.label}" xLabel="Timp" yLabel="Voturi"  sort=True     type=grouped />
 
 ----
 

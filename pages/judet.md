@@ -90,6 +90,26 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND Judet == '${inputs.judete.v
 
 ```
 
+
+```sql ziDataDiff
+
+SELECT  
+    alegeri, 
+    date, 
+    time, 
+    ${inputs.liste.value} AS voturi,
+    ${inputs.liste.value} - LAG(${inputs.liste.value}, 1) OVER (
+        PARTITION BY alegeri, Judet 
+        ORDER BY time
+    ) AS voturi_diferenta
+FROM Judete
+WHERE alegeri IN ${inputs.alegeri.value} AND Judet == '${inputs.judete.value}' AND voturi IS NOT NULL
+ 
+ORDER BY time ASC;
+
+
+```
+
 <Dropdown
     data={judete} 
     name=judete
@@ -121,7 +141,9 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND Judet == '${inputs.judete.v
 <!-- Selected: <br/> {inputs.alegeri.value} <br/>  {inputs.judete.value} <br/>  {inputs.liste.value} -->
  {inputs.judete.value} /  {inputs.liste.value} 
 
-<LineChart data={ziData} x="time" y="voturi" series="alegeri" title="Prezență vot în timp" xLabel="Timp" yLabel="Voturi"  sort=True />
+<LineChart data={ziData} x="time" y="voturi" series="alegeri" title="Prezență vot în timp - agregat (cumulativ)" xLabel="Timp" yLabel="Voturi"  sort=True />
+
+<LineChart data={ziDataDiff} x="time" y="voturi_diferenta" series="alegeri" title="Voturi {inputs.liste.label}" xLabel="Timp" yLabel="Voturi"  sort=True     type=grouped />
 
 ----
 
@@ -137,6 +159,8 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND Judet == '${inputs.judete.v
 />
 
 <BarChart data={nationalDemographics} x="time" y="difference" series="category" title="Demografie" xLabel="Timp" yLabel="Voturi"  sort=True />
+
+
 
  <!-- <Heatmap 
       data={ziDataJud} 
