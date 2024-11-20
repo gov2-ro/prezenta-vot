@@ -13,7 +13,7 @@ export let data;
 	{data} title="Prezență alegeri - Vot Corect" 	 
 	maxWidth=1800
 	fullWidth=true
-	
+	githubRepo="https://github.com/gov2-ro/prezenta.roaep.ro"
 >
 	<slot slot="content" />
 </EvidenceDefaultLayout>

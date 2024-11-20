@@ -1,5 +1,5 @@
 ---
-title: Per județ
+title: județ
 ---
 
  
@@ -7,6 +7,10 @@ title: Per județ
 ```sql alegeri
 SELECT * FROM (
   VALUES 
+('26052019-2019-euparl', '2019 Euparl'),
+('26052019-2019-ref', '2019 Ref'),
+('9062024-2024-euparl', '2024 Euparl'),
+('9062024-2024-local', '2024 Local'),
 ('11122016-2016-parl', '2016 Parl'),
 ('10112019-2019-prez-1', '2019 Prez-1'),
 ('24112019-2019-prez-2', '2019 Prez-2'),
