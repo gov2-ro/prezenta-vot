@@ -1,1 +1,1 @@
-SELECT * FROM prezenta_judete
+SELECT * FROM [prezenta-alegeri]

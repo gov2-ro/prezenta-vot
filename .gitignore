@@ -2,7 +2,6 @@
 .evidence/
 scripts
 
-sources/roaep/*.db
 
 .npmrc
 package-lock.json

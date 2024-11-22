@@ -1,7 +1,6 @@
 SELECT alegeri,
    date,
    time,
-   Nrsectiedevotare,
    Votantilista,
    Mediu,
    Votantipelistapermanenta,
@@ -21,7 +20,7 @@ SELECT alegeri,
    SUM(F_3544) as "F_3544",
    SUM(F_4564) as "F_4564",
    SUM([F_65+]) as "F_65+"
-FROM [prezenta_judete]
+FROM [prezenta-vot]
 GROUP BY date,
    time,
    alegeri
