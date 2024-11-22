@@ -7,6 +7,7 @@ title: Prezență vot Național
 ```sql alegeri
 SELECT * FROM (
   VALUES 
+('22112024-2024-prez-1.1', '2024 Prez 1.1 Diaspora'),
 ('26052019-2019-euparl', '2019 Euparl'),
 ('26052019-2019-ref', '2019 Ref'),
 ('9062024-2024-euparl', '2024 Euparl'),
@@ -122,9 +123,9 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
     title='Alegeri'
     label=label
     multiple=true
-    defaultValue={['11122016-2016-parl', '6122020-2020-parl']}	
+    defaultValue={['22112024-2024-prez-1.1']}	
 />
-
+<!-- ,'10112019-2019-prez-1','24112019-2019-prez-2' -->
  
 
 <Dropdown
@@ -133,7 +134,7 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
     value=lista
     label=label
     title='Voturi'
-    defaultValue={['LP']}
+    defaultValue={['LS']}
 />
 
 <!-- Selected: <br/> {inputs.alegeri.value} <br/>  {inputs.judete.value} <br/>  {inputs.liste.value} -->
@@ -156,7 +157,7 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND value IS NOT NULL; -- Optio
     value=id
     title='Alegeri Single'
     label=label
-    defaultValue={['6122020-2020-parl']}	
+    defaultValue={['22112024-2024-prez-1.1']}	
 />
 
 <BarChart data={nationalDemographics} x="time" y="difference" series="category" title="Demografie" xLabel="Timp" yLabel="Voturi"  sort=True />
