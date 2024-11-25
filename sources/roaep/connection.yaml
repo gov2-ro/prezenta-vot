@@ -1,5 +1,4 @@
 # This file was automatically generated
-name: prezenta_aep
-type: sqlite
-options:
-  filename: prezenta-alegeri-all.db
+name: roaep
+type: csv
+options: {}

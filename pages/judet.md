@@ -7,15 +7,15 @@ title: Profil județ
 ```sql alegeri
 SELECT * FROM (
   VALUES 
-('22112024-2024-prez-1.1', '2024 Prez 1.1 Diaspora'),
-('26052019-2019-euparl', '2019 Euparl'),
-('26052019-2019-ref', '2019 Ref'),
-('9062024-2024-euparl', '2024 Euparl'),
-('9062024-2024-local', '2024 Local'),
-('11122016-2016-parl', '2016 Parl'),
-('10112019-2019-prez-1', '2019 Prez-1'),
-('24112019-2019-prez-2', '2019 Prez-2'),
-('6122020-2020-parl', '2020 Parl')
+('2024-prez-1', '2024 Prez 1'),
+('2019-euparl', '2019 Euparl'),
+('2019-ref', '2019 Ref'),
+('2024-euparl', '2024 Euparl'),
+('2024-local', '2024 Local'),
+('2016-parl', '2016 Parl'),
+('2019-prez-1', '2019 Prez-1'),
+('2019-prez-2', '2019 Prez-2'),
+('2020-parl', '2020 Parl')
 ) AS t(id, label)
 ```
 
@@ -39,7 +39,7 @@ SELECT * FROM (
 ``` 
 
 ```sql ziData
-SELECT  alegeri, date, time, ${inputs.liste.value} AS voturi
+SELECT  alegeri,  substr(timestamp, 1, 10) AS date,   substr(timestamp, 12, 5) AS time,  ${inputs.liste.value} AS voturi
 FROM Judete
 WHERE alegeri IN ${inputs.alegeri.value} AND Judet = COALESCE('${inputs.judete.value}', Judet)
 ORDER BY time ASC;
@@ -49,8 +49,7 @@ ORDER BY time ASC;
 SELECT -- to DELETE
     Judet,
     alegeri,
-    date,
-    time,
+    substr(timestamp, 1, 10) AS date,   substr(timestamp, 12, 5) AS time,
     ${inputs.liste.value} AS voturi,
     ${inputs.liste.value} - LAG(${inputs.liste.value}, 1) OVER (
         PARTITION BY Judet, alegeri 
@@ -68,9 +67,7 @@ ORDER BY time ASC;
 SELECT 
     alegeri,
     Judet,
-    date,
-    time,
-    category,
+    substr(timestamp, 1, 10) AS date,   substr(timestamp, 12, 5) AS time ,    category,
     value,
     value - LAG(value, 1) OVER (
         PARTITION BY alegeri, Judet, category
@@ -100,8 +97,8 @@ WHERE alegeri == '${inputs.alegeriSingle.value}' AND Judet == '${inputs.judete.v
 
 SELECT  
     alegeri, 
-    date, 
-    time, 
+    substr(timestamp, 1, 10) AS date,
+   substr(timestamp, 12, 5) AS time ,
     ${inputs.liste.value} AS voturi,
     ${inputs.liste.value} - LAG(${inputs.liste.value}, 1) OVER (
         PARTITION BY alegeri, Judet 
@@ -134,7 +131,7 @@ ORDER BY time ASC;
     title='Alegeri'
     label=label
     multiple=true
-    defaultValue={['22112024-2024-prez-1.1']}	
+    defaultValue={['2024-prez-1']}	
 />
 <!-- ,'10112019-2019-prez-1','24112019-2019-prez-2' -->
 <Dropdown
@@ -167,7 +164,7 @@ Județ: <b>{inputs.judete.value}</b> / tip listă: <b>{inputs.liste.value} </b>
     value=id
     title='Alegeri Single'
     label=label
-    defaultValue={['22112024-2024-prez-1.1']}	
+    defaultValue={['2024-prez-1']}	
 />
 
 <BarChart data={nationalDemographics} x="time" y="difference" series="category" title="Demografie" xLabel="Timp" yLabel="Voturi"  sort=True />
